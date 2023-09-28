@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Brand {
+  id   Int    @id @default(autoincrement())
+  img  String
+  href String
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  nickname String    @unique
+  email    String    @unique
+  name     String?
+  picture  String?
+  movies   Movie[]
+  series   Series[]
+  popcorn  Popcorn[]
+}
+
+model Movie {
+  id              Int     @id @default(autoincrement())
+  name            String
+  poster_image    String
+  poster_image_id String
+  score           Int
+  critique        String?
+  userId          Int
+  genreId         Int
+  User            User    @relation(fields: [userId], references: [id])
+  Genre           Genre   @relation(fields: [genreId], references: [id])
+}
+
+model Series {
+  id              Int     @id @default(autoincrement())
+  name            String
+  poster_image    String
+  poster_image_id String
+  score           Int
+  critique        String?
+  userId          Int
+  genreId         Int
+  User            User    @relation(fields: [userId], references: [id])
+  Genre           Genre   @relation(fields: [genreId], references: [id])
+}
+
+model Popcorn {
+  id       Int        @id @default(autoincrement())
+  name     String
+  image    String
+  image_id String
+  type     RecipeType
+  link     String
+  userId   Int
+  user     User       @relation(fields: [userId], references: [id])
+}
+
+enum RecipeType {
+  SWEET
+  SALTY
+  SOUR
+  BITTER
+}
+
+model Genre {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique
+  Movie  Movie[]
+  Series Series[]
+}

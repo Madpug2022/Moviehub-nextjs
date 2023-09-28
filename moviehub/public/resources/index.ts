@@ -1,0 +1,5 @@
+export { default as c1 } from './fast-furious-7.webp'
+export { default as c2 } from './939342.jpg'
+export { default as c3 } from './983569.jpg'
+export { default as c4 } from './avengers-endgame-4k_1555208712.jpg'
+export { default as c5 } from './thumb-1920-85503.jpg'

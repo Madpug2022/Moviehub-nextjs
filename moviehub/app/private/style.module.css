@@ -1,0 +1,43 @@
+.loginPage {
+    padding-top: 6.5vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lMessageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    width: 900px;
+    background-image: url('https://c1.wallpaperflare.com/preview/570/413/91/interior-theatre-theater-empty-theater.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2)
+}
+
+.lMessage {
+    margin-bottom: 15vh;
+}
+
+.lMessage p,
+.lMessage span {
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 2px 4px 20px rgba(255, 255, 255, 0.7);
+}
+
+.lMessage button {
+    border: none;
+    background: none;
+    color: #C41C19;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.lMessage button:hover {
+    color: #79110F;
+}

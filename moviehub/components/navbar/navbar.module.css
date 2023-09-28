@@ -1,0 +1,91 @@
+.navigationBar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    transition-duration: 500ms;
+
+}
+
+.navigationBar:hover {
+    background-color: black;
+}
+
+.popLogo {
+    height: 5vh;
+    width: 8vw;
+    transition: display 1s ease-in-out;
+    cursor: pointer;
+}
+
+.centerNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.lateralNav {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto 2vh;
+}
+
+.navLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navLink {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #f1f1f1;
+    text-decoration: none;
+    font-size: 15px;
+    margin: auto 2vh;
+}
+
+.navLink:hover {
+    color: #C41C19;
+}
+
+.loginBtn {
+    border: none;
+    background: none;
+    color: #f1f1f1;
+    cursor: pointer;
+    transition-duration: 500ms;
+}
+
+.loginBtn:hover {
+    color: #C41C19;
+}
+
+.logOutBtn {
+    background: #79110F;
+    padding: 2px 7px;
+    margin-right: 5px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    border: none;
+}
+
+.logOutBtn:hover {
+    background: #C41C19;
+}
+
+.userLogo {
+    height: 5vh;
+    width: 5vh;
+    padding: 0;
+    border-radius: 25px;
+    margin-left: 5px;
+}

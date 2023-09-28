@@ -1,0 +1,117 @@
+.footerContainer {
+    display: grid;
+    grid-template-rows: 8vh 12vh;
+    width: 100%;
+    height: 20vh;
+    background-color: black;
+}
+
+.FCTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.FCTop div {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.FLink {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 15px;
+}
+
+.FLink:hover {
+    color: #C41C19;
+}
+
+.FCBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.FCBottom p {
+    font-size: 10px;
+    color: darkgray;
+    padding: 0;
+    margin-left: 10px;
+    width: 30vh;
+}
+
+.BWLogo {
+    height: 10vh;
+    width: 10vh;
+    margin-left: 10px;
+}
+
+.signatureBtn {
+    background-color: black;
+    border: none;
+    opacity: 1;
+    outline: 0;
+    color: black;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Inconsolata', monospace;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.signatureBtn:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+.signatureBtn:hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+}
+
+.signatureBtn::after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: white;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    background: #323237;
+    content: 'MATIAS A.C.';
+    transform: translateY(-50%) rotateX(90deg);
+}
+
+.signatureBtn::before {
+    border: 1px solid #323237;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: white;
+    display: block;
+    padding: 0 30px;
+    line-height: 40px;
+    transition: 0.5s;
+    position: relative;
+    background: black;
+    content: 'MADE BY';
+    transform: translateY(0) rotateX(0);
+}
+
+@media (max-width: 768px) {
+    .footerContainer {
+        display: none;
+    }
+}

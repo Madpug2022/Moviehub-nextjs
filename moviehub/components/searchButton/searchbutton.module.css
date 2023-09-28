@@ -1,0 +1,26 @@
+.searchContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchButton {
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    font-size: 18px;
+    padding: 0.7vh;
+    cursor: pointer;
+    background-color: 'transparent';
+}
+
+.searchButtonOpen {
+    background: none;
+    border: 2px solid black;
+    color: black;
+    font-size: 18px;
+    padding: 0.7vh;
+    cursor: pointer;
+    background-color: #C41C19;
+}

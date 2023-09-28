@@ -1,0 +1,21 @@
+.brandImg {
+    border: none !important;
+    height: 75px !important;
+    padding: 10px !important;
+}
+
+.brandLink {
+    text-decoration: none;
+}
+
+.brandLinkWrapper {
+    transition-duration: 500ms;
+}
+
+@media (max-width: 768px) {
+    .brandImg {
+        border: none !important;
+        height: 60px !important;
+        padding: 10px !important;
+    }
+}
