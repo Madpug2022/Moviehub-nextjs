@@ -1,0 +1,41 @@
+.editForm {
+    height: 90%;
+    width: 90%;
+}
+
+.editForm label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-right: 3px
+}
+
+.editForm input,
+.editForm textarea {
+    border: none;
+}
+
+.editForm button,
+.editBtnSend {
+    cursor: pointer;
+    border: none;
+    background: #79110F;
+    width: 65px;
+    color: #f1f1f1;
+    padding: 2px;
+    margin: auto;
+    transition-duration: 500ms;
+}
+
+.editForm button:hover,
+.editBtnSend:hover {
+    background: #C41C19;
+}
+
+.editForm div:last-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

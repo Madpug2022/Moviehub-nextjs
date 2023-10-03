@@ -3,6 +3,8 @@ import NavBar from '@/components/navbar/NavBar';
 import type { Metadata } from 'next'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import Footer from '@/components/footer/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Popcorn MovieHub',
@@ -19,6 +21,18 @@ export default function RootLayout({
       <UserProvider>
         <body>
           <NavBar />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
           {children}
           <Footer />
         </body>

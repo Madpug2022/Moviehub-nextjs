@@ -58,3 +58,11 @@
 .mainWrapper div {
     display: flex;
 }
+
+.notFoundPage {
+    padding-top: 6.5vh;
+    height: 93.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

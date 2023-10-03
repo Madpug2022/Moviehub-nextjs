@@ -1,0 +1,30 @@
+.mdTop {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1vh;
+}
+
+.mdTopLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdButton {
+    margin: 0 2px;
+    padding: 3px;
+    border: none;
+    color: black;
+    transition-duration: 500ms;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.mdButton:hover {
+    color: #79110F;
+    text-shadow: 0 0 40px rgba(255, 255, 255)
+}

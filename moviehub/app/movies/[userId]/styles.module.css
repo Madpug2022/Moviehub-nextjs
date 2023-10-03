@@ -1,0 +1,92 @@
+.moviePageContainer {
+    width: 100%;
+    height: auto;
+    padding-top: 6.5vh;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.moviePcLeft {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    background: rgb(0, 0, 0);
+}
+
+.mplTittle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.mplTittle button {
+    border: none;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    background: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.categoryContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryBtn {
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: #f1f1f1;
+    display: flex;
+    height: 4vh;
+    cursor: pointer;
+    margin: 3px 0;
+    font-size: 18px;
+    font-weight: 600;
+    transition-duration: 500ms;
+}
+
+.categoryBtn:hover {
+    color: #C41C19;
+    margin-left: 4px;
+}
+
+.categoryBtnSelected {
+    color: #C41C19;
+    border: none;
+    text-decoration: none;
+    background: none;
+    display: flex;
+    height: 4vh;
+    cursor: pointer;
+    margin: 3px 0;
+    margin-left: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    transition-duration: 500ms;
+}
+
+.MoviePcRight {
+    background: black;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.MoviePcRight::-webkit-scrollbar {
+    display: none;
+}

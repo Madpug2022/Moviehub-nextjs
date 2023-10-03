@@ -8,9 +8,10 @@ import logo from '../../public/resources/Logo Popcorn.jpg'
 import { PiPersonArmsSpreadBold } from "react-icons/pi";
 import { useRouter } from 'next/navigation'
 import { Nova_Round } from 'next/font/google'
-import { SpinnerCircular } from 'spinners-react';
+import { CircularProgress } from '@mui/material';
 import SearchButton from '../searchButton/SearchButton';
 import placeholderLogo from '@/public/resources/bw logo.jpg'
+import createUser from '@/tools/createUser';
 
 
 const nova = Nova_Round({
@@ -23,24 +24,20 @@ const Links_Left = [
     {
         id: 1,
         to: `/movies`,
-        name: 'Movies'
+        name: 'The Watchlist'
     },
-    {
-        id: 2,
-        to: `/series`,
-        name: 'Series'
-    }
+
 ]
 const Links_Rigth = [
+    {
+        id: 2,
+        to: '/FAQ',
+        name: 'FAQ'
+    },
     {
         id: 3,
         to: `/popcorn`,
         name: 'Snack Bar'
-    },
-    {
-        id: 4,
-        to: `/FAQ`,
-        name: 'FAQ'
     }
 ]
 
@@ -52,9 +49,10 @@ const NavBar = () => {
 
     useEffect(() => {
         if (user) {
-            console.log(user);
+            createUser(`/api/user`, user)
         }
-    }, [user])
+    }, [])
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 150) {
@@ -80,7 +78,7 @@ const NavBar = () => {
             <div className={`${classes.centerNav} ${nova.className}`} >
                 <div className={classes.navLinks}>{Links_Left.map(link => {
                     return (
-                        <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={user ? `${link.to}/${user?.nickname}` : `${link.to}`}>{link.name}</Link>
+                        <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={user ? `${link.to}/${user?.nickname}?genre=all` : `${link.to}`}>{link.name}</Link>
                     )
                 })}</div>
 
@@ -98,10 +96,7 @@ const NavBar = () => {
                     )
                 })}</div>
             </div>
-            {isLoading ?
-                <SpinnerCircular
-                    size={40}
-                    color="#f1f1f1" />
+            {isLoading ? <CircularProgress />
                 :
                 <div className={classes.lateralNav}>
                     {user &&

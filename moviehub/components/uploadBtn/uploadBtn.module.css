@@ -1,0 +1,30 @@
+.uploadBtn {
+    margin: 2vh auto;
+    text-transform: uppercase;
+    padding: 1vh 3vw;
+    box-shadow: 0 0 20px #000;
+    color: #f1f1f1;
+    background-color: #79110F;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition-duration: 1s;
+}
+
+.uploadBtn:hover {
+    box-shadow: 0 0 0px #000;
+    background-color: #c41c19;
+}
+
+.uploadBtn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .uploadBtn {
+        padding: 1vh 2vw;
+        font-size: 14px;
+    }
+}

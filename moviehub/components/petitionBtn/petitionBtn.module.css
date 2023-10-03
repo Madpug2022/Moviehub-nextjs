@@ -1,0 +1,11 @@
+.petitionBtn {
+    text-align: center;
+    margin: 0 2px;
+    padding: 3px;
+    border: none;
+    color: #f1f1f1;
+    transition-duration: 500ms;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 50%;
+}

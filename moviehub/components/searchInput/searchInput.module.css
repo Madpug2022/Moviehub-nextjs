@@ -47,3 +47,40 @@
     position: absolute;
     right: 0;
 }
+
+.userSearchList {
+    position: absolute;
+    min-height: 10vh;
+    max-height: 40vh;
+    overflow-y: scroll;
+    top: 30px;
+    width: 355px;
+    background-color: white;
+    padding: 5px;
+    z-index: 1;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    cursor: auto;
+}
+
+.userSearchList ul {
+    list-style: none;
+    padding: 0;
+    cursor: none;
+}
+
+.userSearchList::-webkit-scrollbar {
+    display: none;
+}
+
+.searchresult {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    margin-left: 5px;
+
+}
+
+.userSearchList ul div {
+    display: grid;
+    grid-template-columns: 25px auto;
+}

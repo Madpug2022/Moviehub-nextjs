@@ -1,0 +1,135 @@
+.modalContLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-right: 3vh;
+    color: #ffffff;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 0 0 20px black;
+}
+
+.modalContRigth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 47vh;
+}
+
+.imagePreview {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.modalContLeft h2,
+.modalContLeft span {
+    filter: invert(0) grayscale(1) contrast(9) drop-shadow(.05em .05em black);
+}
+
+.modalContLeft label {
+    margin-right: 5px;
+    filter: invert(0) grayscale(1) contrast(9) drop-shadow(.05em .05em black);
+}
+
+.modalContLeft input,
+.modalContLeft select {
+    border: none;
+}
+
+.modalContLeft textarea {
+    resize: none;
+}
+
+.modalContLeft div {
+    margin: 1vh auto;
+    position: relative;
+}
+
+.errorMsg {
+    position: absolute;
+    background-color: #c41c19;
+    top: 30px;
+    right: 55px;
+    z-index: 1;
+    padding: 2px 5px;
+}
+
+.errorMsgReview {
+    position: absolute;
+    background-color: #c41c19;
+    top: 60px;
+    right: 55px;
+    z-index: 1;
+    padding: 2px 5px;
+}
+
+.scoreErrorMsg {
+    position: absolute;
+    background-color: #c41c19;
+    top: 35px;
+    left: 55px;
+    z-index: 1;
+    padding: 2px 5px;
+}
+
+.scoreErrorMsg::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 11px solid #c41c19;
+    z-index: 1;
+    left: 0;
+    top: -10px;
+}
+
+.offscreen {
+    display: none;
+}
+
+.errorMsg::before,
+.errorMsgReview::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 11px solid #c41c19;
+    z-index: 1;
+    right: 0;
+    top: -10px;
+}
+
+.submitBtn {
+    position: relative;
+    border: none;
+    padding: 2px 12px;
+    margin-left: 40%;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: black;
+    text-transform: uppercase;
+    transition-duration: 500ms;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: #c41c19;
+    color: #f1f1f1;
+}
+
+.submitBtn:disabled,
+.submitBtn[disabled] {
+    color: lightgray;
+    cursor: none;
+    opacity: 0.5;
+    pointer-events: none;
+}
