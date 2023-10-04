@@ -1,0 +1,9 @@
+.popcornPage {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 6.5vh 2vw 0 2vw;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 10% 1fr;
+}

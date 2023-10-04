@@ -1,0 +1,19 @@
+.popcSearchbar {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    padding: 1vh;
+    background: #f1f1f1;
+    justify-content: center;
+    margin: auto;
+    transition: background-color 0.3s;
+}
+
+.popcSearchbar input {
+    width: 100%;
+    border: none;
+}
+
+.focused {
+    background: #C41C19;
+}
