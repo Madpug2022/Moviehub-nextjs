@@ -28,7 +28,7 @@ const ControlBar = (props: PropType) => {
                 )}
                 <Link href={`?edit=confirmEdit`} className={classes.mdButton}><RxPencil2 /></Link>
             </div>
-        ) : <CircularProgress className={classes.mdTopLoading} />
+        ) : <></>
     )
 }
 
