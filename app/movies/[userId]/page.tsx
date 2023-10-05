@@ -23,7 +23,7 @@ interface MovieType {
 
 const loadMovies = async (userId: string) => {
     const URL = process.env.NEXT_PUBLIC_URL_USERS
-    const dinamicData = await fetch(`${URL}/${userId}`, { cache: 'no-store' });
+    const dinamicData = await fetch(`api/movie/${userId}`, { cache: 'no-store' });
     const data = await dinamicData.json();
     const movieData = data.movies;
     return movieData
