@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome to MovieHub!
 
-## Getting Started
+Hi! I'm Matias. 
+This page was made as a project for Assembler Institute.
+I will use this readMe to explain a few things about the project.
 
-First, run the development server:
+# Basic Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The project is separated in two folders, server (backend) and client (frontend).
+You can execute both using 'npm run dev'
+Server is prepared for development enviroment at port 8080
+Client will run at port 5173
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# How to use the page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Step1.](public/resources/steps/1.jpg "This is step1.")
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Step 1: Access our page
+You can access to the Movies or Series tag by logging in, there you will be able to load your favourites movies!
 
-## Learn More
+![Step2.](public/resources/steps/2.jpg "This is step2.")
 
-To learn more about Next.js, take a look at the following resources:
+## Step 2: Load something
+By pressing UPLOAD a modal will open so you can fill the data of the media you will upload!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Step3.](public/resources/steps/3.jpg "This is step3.")
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Step 3: Fill the data
+Fill the tittle, score, review, and image field, pick a genre and upload your critique. It will take a few seconds to reload.
 
-## Deploy on Vercel
+![Step4.](public/resources/steps/4.jpg "This is step4.")
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Step 4: Success!
+You did it! Now you can do the same as many times you want. You can also press en the card to see details, edit or even delete your reviews.
