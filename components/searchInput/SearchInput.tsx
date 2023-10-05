@@ -21,7 +21,8 @@ const SearchInput = (props: PropType) => {
     const { setNotOnMain } = props;
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('http://localhost:3000/api/user');
+            const URL = process.env.NEXT_PUBLIC_URL_USERS || ''
+            const response = await fetch(URL);
             const data = await response.json();
             setUserData(data)
         }
@@ -42,7 +43,7 @@ const SearchInput = (props: PropType) => {
 
     const handleSubmit = (event: react.FormEvent) => {
         event.preventDefault();
-        router.push(`/movies/?name=${searchQuery}`)
+        router.push(`/movies/?name=${searchQuery}?genre=all`)
     }
     return (
         <div className={classes.searchBar}>

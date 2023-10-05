@@ -1,0 +1,80 @@
+.urModal {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px #f1f1f135;
+    transition-duration: 500ms;
+    height: 40vh;
+    width: 40vw;
+    margin: auto;
+}
+
+.bannerContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    margin: auto;
+    box-shadow: 0 0 20px #f1f1f135;
+    height: 100%;
+    width: 100%;
+    background-color: #79110f39;
+}
+
+.bannerImage {
+    height: 40vh;
+    width: 40vw;
+}
+
+.imgBefore {
+    position: absolute;
+    color: transparent;
+    top: 30%;
+    text-transform: uppercase;
+    font-size: 30px;
+    left: 28%;
+    z-index: 1;
+    transition-duration: 500ms;
+    cursor: pointer;
+}
+
+.imgBefore:hover {
+    color: #f1f1f1;
+    opacity: 120%;
+}
+
+.bannerContainer form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bannerContainer form div {
+    margin-top: 5px;
+}
+
+.bannerContainer form h2 {
+    text-align: center;
+}
+
+.bannerContainer form input,
+.bannerContainer form button {
+    width: 90%;
+}
+
+
+.editBtnSend {
+    width: 45%;
+    background: none;
+    color: #fff;
+    border: none;
+    transition-duration: 300ms;
+    cursor: pointer;
+}
+
+.editBtnSend:hover {
+    background: #f1f1f1;
+    color: black;
+}

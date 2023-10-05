@@ -22,7 +22,8 @@ interface MovieType {
 }
 
 const loadMovies = async (userId: string) => {
-    const dinamicData = await fetch(`http://localhost:3000/api/user/${userId}`, { cache: 'no-store' });
+    const URL = process.env.NEXT_PUBLIC_URL_USERS
+    const dinamicData = await fetch(`${URL}/${userId}`, { cache: 'no-store' });
     const data = await dinamicData.json();
     const movieData = data.movies;
     return movieData
@@ -35,6 +36,7 @@ const UserMoviePage = async (props: any) => {
     const genres = await prisma.genre.findMany()
 
     const movieData = await loadMovies(params.userId)
+
 
     const filtered = movieData.filter((movie: MovieType) => movie.Genre.name == selectedGenre)
 

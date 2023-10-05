@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
+import { getSession } from '@auth0/nextjs-auth0';
 import prisma from '@/config/PrismaClient';
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
@@ -10,6 +11,9 @@ cloudinary.config({
 export const POST = async (request: Request, props: any) => {
     const { params } = props;
     try {
+        const session = await getSession();
+
+
         const { userNickName } = params
         const data = await request.formData();
         const image = data.get('posterImage') as File
@@ -64,6 +68,7 @@ export const POST = async (request: Request, props: any) => {
         })
         return NextResponse.json('Ok', { status: 200 });
     } catch (err) {
+
         return NextResponse.json('Error', { status: 500 })
     }
 }

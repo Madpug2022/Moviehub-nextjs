@@ -11,7 +11,8 @@ import popcorn from '@/public/resources/popcorn-ico.jpg'
 import premiumMember from '@/public/resources/Premium-member.jpg'
 
 const loadBrands = async () => {
-    const response = await fetch('http://localhost:3000/api/brand')
+    const URL = process.env.NEXT_PUBLIC_URL_BRAND || ''
+    const response = await fetch(URL)
     const data = await response.json()
     return data
 }

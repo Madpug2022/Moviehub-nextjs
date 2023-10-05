@@ -18,14 +18,16 @@ export const EditForm = (props: FormData) => {
     const { formState: { errors }, register, handleSubmit } = useForm({ defaultValues: { name, score, review } })
 
     const onSubmit = async (data: any) => {
+        const URL = process.env.NEXT_PUBLIC_URL_MOVIE || ''
         const upload = new FormData();
         upload.append('name', data.name)
         upload.append('score', data.score.toString())
         upload.append('review', data.review)
-        await fetch(`http://localhost:3000/api/movie/${userId}/${movieId}`, {
+        await fetch(`${URL}${userId}/${movieId}`, {
             method: 'PUT',
             body: upload
         })
+        toast.success('Movie Edited successfully')
         router.refresh();
         router.push('?')
     }

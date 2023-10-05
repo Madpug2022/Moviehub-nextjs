@@ -1,9 +1,17 @@
 import { NextResponse, NextRequest } from "next/server";
 import prisma from '@/config/PrismaClient';
+import { getSession } from '@auth0/nextjs-auth0';
 
 export const POST = async (req: Request, res: Response) => {
     try {
         const { nickname, email, name, picture } = await req.json();
+        const session = await getSession();
+
+        if (!session) {
+
+            return NextResponse.json('Unauthorized', { status: 401 })
+        }
+
         const user = await prisma.user.findFirst({
             where: {
                 email: email

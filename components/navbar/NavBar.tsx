@@ -36,7 +36,7 @@ const Links_Rigth = [
     },
     {
         id: 3,
-        to: `/popcorn`,
+        to: `/popcorn?filter=`,
         name: 'Snack Bar'
     }
 ]

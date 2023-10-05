@@ -2,6 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import prisma from '@/config/PrismaClient';
 import { deleteImage } from "@/tools/cloudinary";
+import { getSession } from '@auth0/nextjs-auth0';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
@@ -14,6 +15,12 @@ export const DELETE = async (response: Response, props: any) => {
     const { movieId } = params;
 
     try {
+        const session = await getSession();
+
+        if (!session) {
+
+            return NextResponse.json('Unauthorized', { status: 401 })
+        }
         const targetMovie = await prisma.movie.delete({ where: { id: parseInt(movieId) } })
 
         if (!targetMovie) { return NextResponse.json('Movie not found', { status: 404 }) }
@@ -35,6 +42,12 @@ export const PUT = async (request: Request, props: any) => {
     const name = data.get('name') as string
     const score = data.get('score') as string
     try {
+        const session = await getSession();
+
+        if (!session) {
+
+            return NextResponse.json('Unauthorized', { status: 401 })
+        }
         const updatedMovie = await prisma.movie.update({
             where: {
                 id: parseInt(movieId),
