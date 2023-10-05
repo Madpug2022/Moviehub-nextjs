@@ -46,10 +46,10 @@ const NavBar = () => {
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [notOnMain, setNotOnMain] = useState(false);
-
+    const URL = process.env.NEXT_PUBLIC_URL_USERS || ''
     useEffect(() => {
         if (user) {
-            createUser(`/api/user`, user)
+            createUser(URL, user)
         }
     }, [])
 

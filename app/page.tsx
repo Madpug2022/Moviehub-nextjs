@@ -9,6 +9,7 @@ import { SpinnerCircular } from 'spinners-react'
 import BrandLogo from '@/components/brandLogo/BrandLogo'
 import popcorn from '@/public/resources/popcorn-ico.jpg'
 import premiumMember from '@/public/resources/Premium-member.jpg'
+import prisma from '@/config/PrismaClient'
 
 const loadBrands = async () => {
     const URL = process.env.NEXT_PUBLIC_URL_BRAND || ''
@@ -17,7 +18,7 @@ const loadBrands = async () => {
     return data
 }
 interface BrandType {
-    id: string
+    id: number
     img: string
     href: string
 }
@@ -49,7 +50,7 @@ const publicity: PublicityType[] = [
 ]
 
 const MainPage = async () => {
-    const brands = await loadBrands();
+    const brands: BrandType[] = await prisma.brand.findMany()
     return (
         <main>
             <section className={classes.mainWrapper}>
@@ -70,7 +71,7 @@ const MainPage = async () => {
                                 size={75}
                                 color="#f1f1f1" />}>
                                 <BrandLogo
-                                    id={brand.id}
+                                    id={brand.id.toString()}
                                     img={brand.img}
                                     href={brand.href}
                                 />
