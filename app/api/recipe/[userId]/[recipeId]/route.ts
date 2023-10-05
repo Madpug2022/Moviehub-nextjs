@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import prisma from '@/config/PrismaClient';
 import { getSession } from '@auth0/nextjs-auth0';
 
-export const DELETE = async (req: Request, props: any) => {
+export const DELETE = async (response: NextRequest, props: any) => {
     const { params } = props;
     const { recipeId } = params;
 

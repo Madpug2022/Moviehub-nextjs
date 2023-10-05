@@ -10,7 +10,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
     secure: true
 })
-export const DELETE = async (response: Response, props: any) => {
+export const DELETE = async (response: NextRequest, props: any) => {
     const { params } = props;
     const { movieId } = params;
 
