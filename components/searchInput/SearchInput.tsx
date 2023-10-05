@@ -52,7 +52,7 @@ const SearchInput = (props: PropType) => {
                 {searchQuery !== '' && userData.length > 0 && <div className={classes.userSearchList}>
                     <ul>
                         {filteredUsers.map(user => (
-                            <div><Image src={logo} alt='Popcorn Ico' height={25} width={25} style={{ borderRadius: '50%' }} /><Link className={classes.searchresult} key={user.id} href={`/movies/${user.nickname}`}>{user.nickname}</Link></div>
+                            <div><Image src={logo} alt='Popcorn Ico' height={25} width={25} style={{ borderRadius: '50%' }} /><Link className={classes.searchresult} key={user.id} href={`/movies/${user.nickname}?genre=all`}>{user.nickname}</Link></div>
                         ))}
                     </ul>
                 </div>}
