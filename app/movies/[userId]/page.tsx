@@ -36,9 +36,10 @@ const UserMoviePage = async (props: any) => {
     const genres = await prisma.genre.findMany()
 
     const movieData = await loadMovies(params.userId)
-
-
-    const filtered = movieData.filter((movie: MovieType) => movie.Genre.name == selectedGenre)
+    let filtered
+    if (movieData) {
+        filtered = movieData.filter((movie: MovieType) => movie.Genre.name == selectedGenre)
+    }
 
     return (
         <main className={classes.moviePageContainer}>
@@ -61,40 +62,40 @@ const UserMoviePage = async (props: any) => {
                 <UploadBtn userId={params.userId} endpoint={`movies/${params.userId}/upload`} name={'Upload'} />
             </div>
             <div className={classes.MoviePcRight}>
+                {movieData &&
+                    <Suspense fallback={<CircularProgress />}>
+                        {selectedGenre == 'all' || undefined ?
+                            movieData.map((movie: MovieType) =>
 
-                <Suspense fallback={<CircularProgress />}>
-                    {selectedGenre == 'all' || undefined ?
-                        movieData.map((movie: MovieType) =>
+                            (
+                                <MovieComponent
+                                    key={movie.id}
+                                    user={params.userId}
+                                    id={movie.id}
+                                    genres={movie.Genre.name}
+                                    critique={movie.critique}
+                                    name={movie.name}
+                                    poster_img={movie.poster_image}
+                                    score={movie.score}
+                                />)
+                            ) :
+                            filtered.map((movie: MovieType) =>
 
-                        (
-                            <MovieComponent
-                                key={movie.id}
-                                user={params.userId}
-                                id={movie.id}
-                                genres={movie.Genre.name}
-                                critique={movie.critique}
-                                name={movie.name}
-                                poster_img={movie.poster_image}
-                                score={movie.score}
-                            />)
-                        ) :
-                        filtered.map((movie: MovieType) =>
-
-                        (
-                            <MovieComponent
-                                key={movie.id}
-                                user={params.userId}
-                                id={movie.id}
-                                genres={movie.Genre.name}
-                                critique={movie.critique}
-                                name={movie.name}
-                                poster_img={movie.poster_image}
-                                score={movie.score}
-                            />)
-                        )
-                    }
-                </Suspense>
-
+                            (
+                                <MovieComponent
+                                    key={movie.id}
+                                    user={params.userId}
+                                    id={movie.id}
+                                    genres={movie.Genre.name}
+                                    critique={movie.critique}
+                                    name={movie.name}
+                                    poster_img={movie.poster_image}
+                                    score={movie.score}
+                                />)
+                            )
+                        }
+                    </Suspense>
+                }
             </div>
         </main>
     )
