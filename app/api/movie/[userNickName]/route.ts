@@ -30,9 +30,7 @@ export const POST = async (req: Request, res: Response) => {
     try {
         const session = await getSession();
 
-        if (!session) {
-            return NextResponse.json('Unauthorized', { status: 401 })
-        }
+
 
 
         const data = await req.formData();

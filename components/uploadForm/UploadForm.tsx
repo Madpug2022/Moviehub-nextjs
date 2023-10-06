@@ -78,9 +78,6 @@ const UploadForm = (props: PropType) => {
 
         await fetch(`/api/movie/${userId}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
             body: upload,
         });
         isLoading(false)
