@@ -7,12 +7,14 @@ import streamifier from "streamifier";
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const uploadMiddleware = upload.single("file");
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
     secure: true
 })
+
 function runMiddleware(req: Request, res: Response, fn: any) {
     return new Promise((resolve, reject) => {
         fn(req, res, (result: any) => {
@@ -25,9 +27,8 @@ function runMiddleware(req: Request, res: Response, fn: any) {
 }
 
 export const POST = async (req: Request, res: Response) => {
-    await runMiddleware(req, res, uploadMiddleware);
-
     try {
+        await runMiddleware(req, res, uploadMiddleware);
         const session = await getSession();
 
         if (!session) {
@@ -35,6 +36,11 @@ export const POST = async (req: Request, res: Response) => {
         }
 
         const data = await req.formData();
+
+        if (!data) {
+            return NextResponse.json('No error', { status: 404 })
+        }
+
         const image = data.get('posterImage') as File
         const genre = data.get('genres') as string
         const review = data.get('review') as string
