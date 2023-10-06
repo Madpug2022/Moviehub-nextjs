@@ -77,10 +77,12 @@ const UploadForm = (props: PropType) => {
         upload.append('genres', genres)
         const URL = process.env.NEXT_PUBLIC_URL_MOVIE || ''
         try {
-            await axios.post(
+            const response = await axios.post(
                 `${URL}${userId}`,
                 upload
             );
+            console.log(response.data);
+
 
         } catch (err) {
             console.log(err);

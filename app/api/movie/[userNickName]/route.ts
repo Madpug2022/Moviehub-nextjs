@@ -31,6 +31,10 @@ export const POST = async (request: Request, props: any) => {
         const bytes = await image.arrayBuffer()
         const buffer = Buffer.from(bytes)
 
+        if (!bytes || !buffer) {
+            return NextResponse.json("Buffer failed", { status: 404 })
+        }
+
         const upload: any = await new Promise((resolve, reject) => {
             cloudinary.uploader
                 .upload_stream({ folder: 'Movies' }, (err, result) => {
@@ -43,6 +47,9 @@ export const POST = async (request: Request, props: any) => {
                 })
                 .end(buffer);
         })
+        if (!upload) {
+            return NextResponse.json('Error in upload', { status: 404 });
+        }
         const user = await prisma.user.findFirst({
             where: {
                 nickname: userNickName
@@ -70,7 +77,10 @@ export const POST = async (request: Request, props: any) => {
                 Genre: { connect: { id: genreId?.id } }
             }
         })
-        return NextResponse.json('Ok', { status: 200 });
+        if (!newMovie) {
+            return NextResponse.json('Error', { status: 200 });
+        }
+        return NextResponse.json(newMovie, { status: 200 });
     } catch (err) {
 
         return NextResponse.json('Error', { status: 500 })
