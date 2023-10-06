@@ -36,8 +36,10 @@ export const POST = async (request: Request, props: any) => {
                 .upload_stream({ folder: 'Movies' }, (err, result) => {
                     if (err) {
                         reject(err);
+                        return NextResponse.json('Error in promise', { status: 404 });
                     }
                     resolve(result);
+                    NextResponse.json('Success')
                 })
                 .end(buffer);
         })
