@@ -15,11 +15,20 @@ cloudinary.config({
     secure: true
 })
 
-
+function runMiddleware(req: Request, res: Response, fn: any) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result: any) => {
+            if (result instanceof Error) {
+                return reject(result);
+            }
+            return resolve(result);
+        });
+    });
+}
 
 export const POST = async (req: Request, res: Response) => {
     try {
-
+        await runMiddleware(req, res, uploadMiddleware);
         const session = await getSession();
 
         if (!session) {
