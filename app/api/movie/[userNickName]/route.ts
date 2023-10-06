@@ -108,3 +108,8 @@ export const POST = async (req: Request, res: Response) => {
     }
 
 }
+export const config = {
+    api: {
+        bodyParser: false,
+    }
+}
