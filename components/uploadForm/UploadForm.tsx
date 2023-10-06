@@ -81,7 +81,8 @@ const UploadForm = (props: PropType) => {
                 `${URL}${userId}`,
                 upload
             );
-            console.log(response.data);
+            console.log(`${URL}${userId}`);
+            console.log(response)
 
 
         } catch (err) {
