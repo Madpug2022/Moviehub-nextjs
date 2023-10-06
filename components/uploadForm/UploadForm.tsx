@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import preview from '@/public/resources/popcorn-ico.jpg'
 import { useRouter } from 'next/navigation'
 import { toast } from "react-toastify";
+import { CircularProgress } from '@mui/material';
 
 interface MovieReview {
     userId?: string;
@@ -30,6 +31,7 @@ interface PropType {
 const UploadForm = (props: PropType) => {
     const router = useRouter()
     const { genres, userId } = props;
+    const [loading, isLoading] = useState(false)
     const [formData, setFormData] = useState<MovieReview>({
         userId: userId,
         name: '',
@@ -64,6 +66,7 @@ const UploadForm = (props: PropType) => {
     };
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        isLoading(true)
         const { userId, name, score, posterImage, review, genres } = formData;
         const upload = new FormData();
         upload.append('name', name)
@@ -71,11 +74,13 @@ const UploadForm = (props: PropType) => {
         upload.append('posterImage', posterImage as File)
         upload.append('review', review)
         upload.append('genres', genres)
+        upload.append('user', userId as string)
 
         await fetch(`/api/movie/${userId}`, {
             method: 'POST',
             body: upload,
         });
+        isLoading(false)
         toast.success('Movie was successfully uploaded')
         router.refresh();
         router.back();
@@ -188,7 +193,7 @@ const UploadForm = (props: PropType) => {
 
                     </div>
 
-                    <input style={{ zIndex: '1000' }} disabled={formData.genres === '' || formData.posterImage === null || validName == false ? true : false} className={classes.submitBtn} type="submit" value="Submit" />
+                    {loading ? <CircularProgress /> : <input style={{ zIndex: '1000' }} disabled={formData.genres === '' || formData.posterImage === null || validName == false ? true : false} className={classes.submitBtn} type="submit" value="Submit" />}
                 </form>
             </div>
             <div className={classes.modalContRigth}>

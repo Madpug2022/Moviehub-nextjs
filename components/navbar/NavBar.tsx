@@ -51,7 +51,7 @@ const NavBar = () => {
         if (user) {
             createUser(URL, user)
         }
-    }, [])
+    }, [user])
 
     useEffect(() => {
         const handleScroll = () => {

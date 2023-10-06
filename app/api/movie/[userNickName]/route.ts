@@ -23,9 +23,10 @@ function runMiddleware(req: Request, res: Response, fn: any) {
         });
     });
 }
-export const POST = async (req: Request, res: Response, props: any) => {
+
+export const POST = async (req: Request, res: Response) => {
     await runMiddleware(req, res, uploadMiddleware);
-    const { params } = props;
+
     try {
         const session = await getSession();
 
@@ -33,14 +34,14 @@ export const POST = async (req: Request, res: Response, props: any) => {
             return NextResponse.json('Unauthorized', { status: 401 })
         }
 
-        const { userNickName } = params
+
         const data = await req.formData();
         const image = data.get('posterImage') as File
         const genre = data.get('genres') as string
         const review = data.get('review') as string
         const name = data.get('name') as string
         const score = data.get('score') as string
-
+        const userNickName = data.get('user') as string
 
         if (!image) {
             return NextResponse.json("Image not found", { status: 404 })
@@ -48,24 +49,35 @@ export const POST = async (req: Request, res: Response, props: any) => {
         const bytes = await image.arrayBuffer()
         const buffer = Buffer.from(bytes)
 
-        const upload: any = await new Promise((resolve, reject) => {
-            cloudinary.uploader
-                .upload_stream(
-                    {
-                        folder: "demo",
-                    },
-                    (error, result) => {
-                        if (error) return console.error(error);
-                        return NextResponse.json(result, { status: 200 });
+        let uploadedImage: string | undefined;
+        let uploadedImageId: string | undefined;
+        const uploadPromise = new Promise((resolve, reject) => {
+            const uploadStream = cloudinary.uploader.upload_stream(
+                {
+                    folder: "Movies",
+                },
+                (error, result) => {
+                    if (error) {
+                        console.error(error);
+                        reject(error);
+                        return NextResponse.json('Error', { status: 500 });
                     }
-                );
-            streamifier.createReadStream(buffer).pipe(upload);
-        })
+
+                    resolve(result);
+                    uploadedImage = result?.secure_url;
+                    uploadedImageId = result?.public_id
+                }
+            );
+            streamifier.createReadStream(buffer).pipe(uploadStream);
+        });
+        await uploadPromise
+
         const user = await prisma.user.findFirst({
             where: {
                 nickname: userNickName
             }
         })
+
         if (!user) {
             return NextResponse.json('User not found', { status: 404 });
         }
@@ -74,23 +86,27 @@ export const POST = async (req: Request, res: Response, props: any) => {
                 name: genre
             }
         })
+
         if (!genreId) {
             return NextResponse.json('Genre not found', { status: 404 });
         }
+
         const newMovie = await prisma.movie.create({
             data: {
                 User: { connect: { id: user.id } },
-                poster_image: upload.secure_url,
-                poster_image_id: upload.public_id,
+                poster_image: uploadedImage as string,
+                poster_image_id: uploadedImageId as string,
                 name: name,
                 score: parseInt(score),
                 critique: review,
                 Genre: { connect: { id: genreId?.id } }
             }
         })
+
         return NextResponse.json('Ok', { status: 200 });
     } catch (err) {
-
+        console.log(err);
         return NextResponse.json('Error', { status: 500 })
     }
+
 }
