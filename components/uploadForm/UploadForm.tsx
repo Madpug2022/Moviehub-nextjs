@@ -75,10 +75,10 @@ const UploadForm = (props: PropType) => {
         upload.append('posterImage', posterImage as File)
         upload.append('review', review)
         upload.append('genres', genres)
-
+        const URL = process.env.NEXT_PUBLIC_URL_MOVIE || ''
         try {
             await axios.post(
-                `/api/movie/${userId}`,
+                `${URL}${userId}`,
                 upload
             );
 
