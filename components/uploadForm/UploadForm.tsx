@@ -76,11 +76,14 @@ const UploadForm = (props: PropType) => {
         upload.append('genres', genres)
         upload.append('user', userId as string)
 
-        await fetch(`/api/movie/${userId}`, {
-            method: 'POST',
-            body: upload,
-        });
-
+        try {
+            await fetch(`/api/movie/${userId}`, {
+                method: 'POST',
+                body: upload,
+            });
+        } catch (err) {
+            console.log(err);
+        }
 
         isLoading(false)
         toast.success('Movie was successfully uploaded')
