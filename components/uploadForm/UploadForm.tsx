@@ -6,6 +6,7 @@ import preview from '@/public/resources/popcorn-ico.jpg'
 import { useRouter } from 'next/navigation'
 import { toast } from "react-toastify";
 import { CircularProgress } from '@mui/material';
+import axios from 'axios'
 
 interface MovieReview {
     userId?: string;
@@ -76,10 +77,10 @@ const UploadForm = (props: PropType) => {
         upload.append('genres', genres)
 
         try {
-            await fetch(`/api/movie/${userId}`, {
-                method: 'POST',
-                body: upload,
-            });
+            await axios.post(
+                `/api/movie/${userId}`,
+                upload
+            );
 
         } catch (err) {
             console.log(err);
