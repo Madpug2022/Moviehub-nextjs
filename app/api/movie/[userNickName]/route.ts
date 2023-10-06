@@ -30,8 +30,9 @@ export const POST = async (req: Request, res: Response) => {
     try {
         const session = await getSession();
 
-
-
+        if (!session) {
+            return NextResponse.json('Unauthorized', { status: 401 })
+        }
 
         const data = await req.formData();
         const image = data.get('posterImage') as File
@@ -56,7 +57,6 @@ export const POST = async (req: Request, res: Response) => {
                 },
                 (error, result) => {
                     if (error) {
-                        console.error(error);
                         reject(error);
                         return NextResponse.json('Error', { status: 500 });
                     }
@@ -89,7 +89,7 @@ export const POST = async (req: Request, res: Response) => {
             return NextResponse.json('Genre not found', { status: 404 });
         }
 
-        const newMovie = await prisma.movie.create({
+        await prisma.movie.create({
             data: {
                 User: { connect: { id: user.id } },
                 poster_image: uploadedImage as string,
@@ -103,7 +103,7 @@ export const POST = async (req: Request, res: Response) => {
 
         return NextResponse.json('Ok', { status: 200 });
     } catch (err) {
-        console.log(err);
+
         return NextResponse.json('Error', { status: 500 })
     }
 
