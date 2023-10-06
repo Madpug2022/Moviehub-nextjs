@@ -11,12 +11,6 @@ import popcorn from '@/public/resources/popcorn-ico.jpg'
 import premiumMember from '@/public/resources/Premium-member.jpg'
 import prisma from '@/config/PrismaClient'
 
-const loadBrands = async () => {
-    const URL = process.env.NEXT_PUBLIC_URL_BRAND || ''
-    const response = await fetch(URL)
-    const data = await response.json()
-    return data
-}
 interface BrandType {
     id: number
     img: string

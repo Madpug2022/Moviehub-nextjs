@@ -74,21 +74,23 @@ const UploadForm = (props: PropType) => {
         upload.append('posterImage', posterImage as File)
         upload.append('review', review)
         upload.append('genres', genres)
-        upload.append('user', userId as string)
 
         try {
             await fetch(`/api/movie/${userId}`, {
                 method: 'POST',
                 body: upload,
             });
+
         } catch (err) {
             console.log(err);
+        } finally {
+            isLoading(false);
+            toast.success('Movie was successfully uploaded')
+            router.refresh();
+            router.back();
         }
 
-        isLoading(false)
-        toast.success('Movie was successfully uploaded')
-        router.refresh();
-        router.back();
+
     };
     const [validName, setValidName] = useState(false);
     const [nameFocus, setNameFocus] = useState(false);
