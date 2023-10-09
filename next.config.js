@@ -4,6 +4,7 @@ const nextConfig = {
         serverActions: true,
     },
     images: {
+        domains: ['**'],
         remotePatterns: [
             {
                 protocol: "https",

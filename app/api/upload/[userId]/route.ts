@@ -2,22 +2,27 @@ import { NextResponse, NextRequest } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import { getSession } from '@auth0/nextjs-auth0';
 import prisma from '@/config/PrismaClient';
+
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET,
-    secure: true
 })
-export const POST = async (request: Request, props: any) => {
+
+export const POST = async (request: NextRequest, props: any) => {
     const { params } = props;
-    const { userNickName } = params
+    const { userId } = params
     const data = await request.formData();
     const image = data.get('posterImage') as File
     const genre = data.get('genres') as string
     const review = data.get('review') as string
     const name = data.get('name') as string
     const score = data.get('score') as string
+    const imageData = data.get('imageData') as any
+
     try {
+
         const session = await getSession();
 
         if (!session) {
@@ -35,24 +40,25 @@ export const POST = async (request: Request, props: any) => {
             return NextResponse.json("Buffer failed", { status: 404 })
         }
 
-        const upload: any = await new Promise((resolve, reject) => {
-            cloudinary.uploader
-                .upload_stream({ folder: 'Movies' }, (err, result) => {
-                    if (err) {
-                        reject(err);
-                        return NextResponse.json('Error in promise', { status: 404 });
-                    }
-                    resolve(result);
-                    NextResponse.json('Success')
-                })
-                .end(buffer);
-        })
+        //const upload: any = await new Promise((resolve, reject) => {
+        //    cloudinary.uploader
+        //        .upload_stream({ folder: 'movie-uploads', upload_preset: 'movie-uploads' }, (err, result) => {
+        //            if (err) {
+        //                console.log(err);
+        //                reject(err);
+        //            }
+        //            resolve(result);
+        //            NextResponse.json('Success')
+        //        })
+        //        .end(buffer);
+        //})
+        const upload = await cloudinary.uploader.upload(imageData)
         if (!upload) {
             return NextResponse.json('Error in upload', { status: 404 });
         }
         const user = await prisma.user.findFirst({
             where: {
-                nickname: userNickName
+                nickname: userId
             }
         })
         if (!user) {
@@ -80,9 +86,9 @@ export const POST = async (request: Request, props: any) => {
         if (!newMovie) {
             return NextResponse.json('Error', { status: 200 });
         }
-        return NextResponse.json(newMovie, { status: 200 });
+        return NextResponse.json('Ok', { status: 200 });
     } catch (err) {
-
-        return NextResponse.json('Error', { status: 500 })
+        console.log(err);
+        return NextResponse.json('Error in the code', { status: 500 })
     }
 }

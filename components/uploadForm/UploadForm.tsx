@@ -6,7 +6,7 @@ import preview from '@/public/resources/popcorn-ico.jpg'
 import { useRouter } from 'next/navigation'
 import { toast } from "react-toastify";
 import { CircularProgress } from '@mui/material';
-import axios from 'axios'
+
 
 interface MovieReview {
     userId?: string;
@@ -27,9 +27,15 @@ interface PropType {
     userId: string;
 }
 
-
+const readData = (f: any) =>
+    new Promise((resolve) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.readAsDataURL(f)
+    })
 
 const UploadForm = (props: PropType) => {
+    const UPLOADURL = process.env.NEXT_PUBLIC_URL_UPLOAD || ''
     const router = useRouter()
     const { genres, userId } = props;
     const [loading, isLoading] = useState(false)
@@ -70,21 +76,24 @@ const UploadForm = (props: PropType) => {
         isLoading(true)
         const { userId, name, score, posterImage, review, genres } = formData;
         const upload = new FormData();
+        const imageData: any = await readData(posterImage)
         upload.append('name', name)
         upload.append('score', score.toString())
         upload.append('posterImage', posterImage as File)
         upload.append('review', review)
         upload.append('genres', genres)
-        const URL = process.env.NEXT_PUBLIC_URL_MOVIE || ''
+        upload.append('imageData', imageData)
+
+
         try {
-            const response = await axios.post(
-                `${URL}${userId}`,
-                upload
+            const response = await fetch(
+                `${UPLOADURL}/${userId}`, {
+                method: 'POST',
+                body: upload
+            }
+
             );
-            console.log(`${URL}${userId}`);
             console.log(response)
-
-
         } catch (err) {
             console.log(err);
         } finally {

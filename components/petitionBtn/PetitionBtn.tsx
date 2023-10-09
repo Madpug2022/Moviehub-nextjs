@@ -18,7 +18,7 @@ export const PetitionBtn = (props: PropType) => {
     const handleAction = async () => {
         const URL = process.env.NEXT_PUBLIC_URL_MOVIE || ''
         if (action == 'delete') {
-            await fetch(`${URL}${userId}/${movieId}`, {
+            await fetch(`${URL}/${userId}/${movieId}`, {
                 method: 'DELETE',
             })
             toast.error('Movie deleted successfully')

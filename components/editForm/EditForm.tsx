@@ -23,7 +23,7 @@ export const EditForm = (props: FormData) => {
         upload.append('name', data.name)
         upload.append('score', data.score.toString())
         upload.append('review', data.review)
-        await fetch(`${URL}${userId}/${movieId}`, {
+        await fetch(`${URL}/${userId}/${movieId}`, {
             method: 'PUT',
             body: upload
         })
