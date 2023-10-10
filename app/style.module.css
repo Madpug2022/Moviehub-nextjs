@@ -66,3 +66,25 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 600px) {
+    .logoPopcorn {
+        height: 12vh;
+        width: 250px;
+        padding: 1vh;
+
+    }
+
+    .mainWrapper h1 {
+        font-size: 24px;
+        margin-top: 6vh;
+        text-align: center;
+    }
+
+    .mainWrapper h3 {
+        margin-top: 1vh;
+        text-shadow: 0 0 40px #000;
+        text-align: center;
+    }
+
+}

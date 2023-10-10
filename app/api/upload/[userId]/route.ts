@@ -4,6 +4,7 @@ import { getSession } from '@auth0/nextjs-auth0';
 import prisma from '@/config/PrismaClient';
 
 
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD,
     api_key: process.env.CLOUDINARY_API_KEY,

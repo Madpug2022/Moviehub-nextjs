@@ -5,6 +5,7 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 import Footer from '@/components/footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MNavbar from '@/components/navbar/mobile Navbar/MNavbar';
 
 export const metadata: Metadata = {
   title: 'Popcorn MovieHub',
@@ -35,6 +36,7 @@ export default function RootLayout({
           />
           {children}
           <Footer />
+          <MNavbar />
         </body>
       </UserProvider>
     </html>

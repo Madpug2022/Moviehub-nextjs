@@ -46,6 +46,7 @@ const NavBar = () => {
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [notOnMain, setNotOnMain] = useState(false);
+
     const URL = process.env.NEXT_PUBLIC_URL_USERS || ''
     useEffect(() => {
         if (user) {
@@ -69,33 +70,35 @@ const NavBar = () => {
 
     }, []);
 
+
     return (
         <nav className={classes.navigationBar} style={isScrolled || notOnMain ? { backgroundColor: 'black' } : { backgroundColor: '' }}>
             <div className={classes.lateralNav}>
                 <SearchButton setNotOnMain={setNotOnMain} />
             </div>
+            <>
+                <div className={`${classes.centerNav} ${nova.className}`} >
+                    <div className={classes.navLinks}>{Links_Left.map(link => {
+                        return (
+                            <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={user ? `${link.to}/${user?.nickname}?genre=all` : `${link.to}`}>{link.name}</Link>
+                        )
+                    })}</div>
 
-            <div className={`${classes.centerNav} ${nova.className}`} >
-                <div className={classes.navLinks}>{Links_Left.map(link => {
-                    return (
-                        <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={user ? `${link.to}/${user?.nickname}?genre=all` : `${link.to}`}>{link.name}</Link>
-                    )
-                })}</div>
+                    <Image
+                        src={logo}
+                        alt='Logo for Popcorn'
+                        className={classes.popLogo}
+                        onClick={() => { router.push('/'); setNotOnMain(false) }}
+                        style={isScrolled || notOnMain ? { display: 'block' } : { display: 'none' }}
+                    />
 
-                <Image
-                    src={logo}
-                    alt='Logo for Popcorn'
-                    className={classes.popLogo}
-                    onClick={() => { router.push('/'); setNotOnMain(false) }}
-                    style={isScrolled || notOnMain ? { display: 'block' } : { display: 'none' }}
-                />
-
-                <div className={classes.navLinks}>{Links_Rigth.map(link => {
-                    return (
-                        <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={link.to}>{link.name}</Link>
-                    )
-                })}</div>
-            </div>
+                    <div className={classes.navLinks}>{Links_Rigth.map(link => {
+                        return (
+                            <Link className={classes.navLink} onClick={() => { setNotOnMain(true) }} key={link.id} href={link.to}>{link.name}</Link>
+                        )
+                    })}</div>
+                </div>
+            </>
             {isLoading ? <CircularProgress />
                 :
                 <div className={classes.lateralNav}>
@@ -111,6 +114,8 @@ const NavBar = () => {
                             <PiPersonArmsSpreadBold />
                         </button>}
                 </div>}
+
+
         </nav>
     )
 }

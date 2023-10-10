@@ -15,3 +15,9 @@
     box-shadow: 0 0 0px #000;
     background-color: #c41c19;
 }
+
+@media screen and (max-width: 600px) {
+    .joinBtn {
+        margin-top: 5vh;
+    }
+}

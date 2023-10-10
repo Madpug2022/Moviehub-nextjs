@@ -90,17 +90,20 @@ const UploadForm = (props: PropType) => {
                 `${UPLOADURL}/${userId}`, {
                 method: 'POST',
                 body: upload
+            });
+            if (response.ok) {
+                toast.success('Movie was successfully uploaded')
+                router.refresh();
+                router.back();
+            } else {
+                toast.error('The file must not exceed 512kb of size');
+                return
             }
-
-            );
-            console.log(response)
         } catch (err) {
             console.log(err);
         } finally {
+
             isLoading(false);
-            toast.success('Movie was successfully uploaded')
-            router.refresh();
-            router.back();
         }
 
 

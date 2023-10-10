@@ -84,3 +84,14 @@
     display: grid;
     grid-template-columns: 25px auto;
 }
+
+@media screen and (max-width: 600px) {
+    .searchForm input {
+        width: 160px !important;
+    }
+
+    .userSearchList {
+        width: 250px;
+        left: 1px
+    }
+}
