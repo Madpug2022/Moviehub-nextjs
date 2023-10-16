@@ -150,7 +150,7 @@ const UploadForm = (props: PropType) => {
                         <p className={nameFocus || validName ? `${classes.offscreen}` : `${classes.errorMsg}`}>This field is required and max length is 100 characters</p>
                         <label htmlFor="name">Tittle</label>
                         <input
-                            style={{ width: '80%' }}
+
                             type="text"
                             id="name"
                             name="name"
@@ -166,6 +166,7 @@ const UploadForm = (props: PropType) => {
                     <div>
                         <label htmlFor="score">Score</label>
                         <input
+                            style={{ width: '35px' }}
                             type="number"
                             id="score"
                             name="score"
@@ -216,7 +217,7 @@ const UploadForm = (props: PropType) => {
 
                     </div>
 
-                    {loading ? <CircularProgress /> : <input style={{ zIndex: '1000' }} disabled={formData.genres === '' || formData.posterImage === null || validName == false ? true : false} className={classes.submitBtn} type="submit" value="Submit" />}
+                    {loading ? <CircularProgress /> : <input style={{ zIndex: '1000', width: '100px' }} disabled={formData.genres === '' || formData.posterImage === null || validName == false ? true : false} className={classes.submitBtn} type="submit" value="Submit" />}
                 </form>
             </div>
             <div className={classes.modalContRigth}>

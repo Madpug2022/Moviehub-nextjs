@@ -35,7 +35,11 @@
     filter: invert(0) grayscale(1) contrast(9) drop-shadow(.05em .05em black);
 }
 
-.modalContLeft input,
+.modalContLeft input {
+    width: 80%;
+    border: none;
+}
+
 .modalContLeft select {
     border: none;
 }
@@ -51,6 +55,7 @@
 
 .errorMsg {
     position: absolute;
+    font-size: 10px;
     background-color: #c41c19;
     top: 30px;
     right: 55px;
@@ -61,6 +66,7 @@
 .errorMsgReview {
     position: absolute;
     background-color: #c41c19;
+    font-size: 10px;
     top: 60px;
     right: 55px;
     z-index: 1;
@@ -70,6 +76,7 @@
 .scoreErrorMsg {
     position: absolute;
     background-color: #c41c19;
+    font-size: 10px;
     top: 35px;
     left: 55px;
     z-index: 1;
@@ -132,4 +139,24 @@
     cursor: none;
     opacity: 0.5;
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .modalContLeft h2 {
+        font-size: 18px;
+    }
+
+    .modalContLeft input {
+        width: 250px;
+    }
+
+    .modalContLeft textarea {
+        width: 250px;
+    }
+
+    .scoreErrorMsg,
+    .errorMsg,
+    .errorMsgReview {
+        display: none;
+    }
 }

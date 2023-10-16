@@ -45,7 +45,7 @@ const UserMoviePage = async (props: any) => {
         <main className={classes.moviePageContainer}>
             <div className={classes.moviePcLeft}>
                 <div className={classes.mplTittle}>
-                    <h2 style={{ fontSize: '20px' }}>Hello {`${params.userId}`}</h2>
+                    <h2>Hello {`${params.userId}`}</h2>
                 </div>
                 <Suspense fallback={<CircularProgress />}>
                     <div className={classes.categoryContainer}>

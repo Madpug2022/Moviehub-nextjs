@@ -90,3 +90,30 @@
 .MoviePcRight::-webkit-scrollbar {
     display: none;
 }
+
+@media (max-width: 768px) {
+    .moviePageContainer {
+        grid-template-columns: 40% 60%;
+    }
+
+    .moviePcLeft {
+        padding: 10px;
+    }
+
+    .mplTittle {
+        justify-content: center;
+        font-size: 14px !important;
+    }
+
+    .mplTittle h2 {
+        font-size: 14px;
+    }
+
+    .categoryBtn {
+        font-size: 14px;
+    }
+
+    .MoviePcRight {
+        padding-bottom: 7.5vh;
+    }
+}
