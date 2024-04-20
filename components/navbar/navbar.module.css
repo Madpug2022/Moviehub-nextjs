@@ -27,7 +27,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-left: 10vh;
+
 }
 
 .lateralNav {
@@ -60,6 +60,9 @@
 
 .loginBtn {
     border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     background: none;
     color: #f1f1f1;
     cursor: pointer;

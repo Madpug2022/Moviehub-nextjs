@@ -36,8 +36,8 @@ const Links_Rigth = [
     },
     {
         id: 3,
-        to: `/popcorn?filter=`,
-        name: 'Snack Bar'
+        to: '/',
+        name: 'Home'
     }
 ]
 
@@ -111,6 +111,7 @@ const NavBar = () => {
                         </>}
                     {!user &&
                         <button className={classes.loginBtn} onClick={() => { router.push('/api/auth/login') }}>
+                            LOGIN
                             <PiPersonArmsSpreadBold />
                         </button>}
                 </div>}

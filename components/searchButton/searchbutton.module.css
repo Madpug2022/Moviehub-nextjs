@@ -6,6 +6,9 @@
 }
 
 .searchButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     background: none;
     border: none;
     color: #f1f1f1;
@@ -13,6 +16,11 @@
     padding: 0.7vh;
     cursor: pointer;
     background-color: 'transparent';
+    transition-duration: 500ms;
+}
+
+.searchButton:hover {
+    color: #C41C19;
 }
 
 .searchButtonOpen {

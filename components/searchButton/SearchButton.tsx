@@ -19,6 +19,7 @@ const SearchButton = (props: PropType) => {
                 onClick={() => { setOpen(!open) }}
             >
                 <PiMagnifyingGlassFill />
+                {!open && <span>SEARCH</span>}
             </button>
             {open && <SearchInput setNotOnMain={setNotOnMain} />}
         </div>
