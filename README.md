@@ -1,21 +1,33 @@
-# Welcome to MovieHub!
+### Description
 
-Hi! I'm Matias. 
-This page was made as a project for Assembler Institute.
-I will use this readMe to explain a few things about the project.
+Welcome to the MovieHub application. 
 
-# Basic Structure
+This web page works as a notebook to have a  recording of the watched movies and series, other users will be able to see your profile yo see scores and reviews you have.
 
-The project is separated in two folders, server (backend) and client (frontend).
-You can execute both using 'npm run dev'
-Server is prepared for development enviroment at port 8080
-Client will run at port 5173
+This projects utilizes the Languages: **HTML, CSS, Typescript.**
+Architecture: **React** and **NextJS**
+Databases: **PostgreSQL**
+Libraries: **Auth0, Cloudinary, i18next, antd**
+
+**BackEnd**: NodeJs, Express, Prisma, Mongoose
+
+**Responsivenes**: This application is completely responsive.
+
+1- Clone the above repositories in your personal computer.
+2- You can use the command 'npm run dev' to start the servers and FrontEnd display.
+3- Frontend will run in localhost: 3000 by default
+
+### Deployment
+
+You can test the app in vercel!
+
+  [https://moviehub-nextjs.vercel.app/](https://moviehub-nextjs.vercel.app/))
 
 # How to use the page
 
 ![Step1.](public/resources/steps/1.jpg "This is step1.")
 
-## Step 1: Access our page
+## Step 1: Access the page
 You can access to the Movies or Series tag by logging in, there you will be able to load your favourites movies!
 
 ![Step2.](public/resources/steps/2.jpg "This is step2.")
